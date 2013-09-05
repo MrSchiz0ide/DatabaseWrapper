@@ -1,11 +1,5 @@
 <?php
-/**
- *@ --------------------------------------------------
- *@ System to handle dynamic Configurations          |
- *@ Developed by Sir Schiz0ide, all credits go to me |
- *@ Version 1.0                                      |
- *@--------------------------------------------------|
-**/
+
 class Config 
 {
 	public static $config = array();
