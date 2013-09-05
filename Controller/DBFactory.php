@@ -14,7 +14,7 @@ class DBFactory
 	private function __construct() {}
 	private function __clone() {}
 
-	public static function Get_Instance()
+	public static function getInstance()
 	{
 		
 		if(self::$_instance === null)
