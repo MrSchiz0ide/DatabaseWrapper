@@ -15,7 +15,7 @@ class DBFactoryChild
 	{
 		try
 		{
-			self::$dbh = DBFactory::Get_Instance();
+			self::$dbh = DBFactory::getInstance();
 			$Swag = self::$dbh->prepare($SQL);
 			$Swag->execute($Params);
 			$Result = $Swag->fetch(PDO::FETCH_ASSOC);
@@ -32,7 +32,7 @@ class DBFactoryChild
 		//This should only be used for checking a login or anything similar to that
 		try
 		{
-			self::$dbh = DBFactory::Get_Instance();
+			self::$dbh = DBFactory::getInstance();
 			$Execution = self::$dbh->prepare($SQL);
 			$Execution->execute($Params);
 			$Result = $Execution->fetchColumn();
