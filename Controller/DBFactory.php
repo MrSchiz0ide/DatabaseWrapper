@@ -20,7 +20,7 @@ class DBFactory
 		if(self::$_instance === null)
 		{
 			try {
-			self::$_instance = new PDO("mysql:host=localhost;dbname=database_wrapper", "root", ""); 
+			self::$_instance = new PDO('mysql:host=' . Config::Read("DB_HOST") . ';dbname=' . Config::Read("DB_Name"), Config::Read("DB_User"), Config::Read("DB_Pass")); 
 			}
 			catch(PDOException $error)
 			{
