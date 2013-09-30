@@ -2,61 +2,70 @@
 /**
  *@ --------------------------------------------------
  *@ Singleton PDO wrapper         					 |
- *@ Developed by Sir Schiz0ide                       |
+ *@ Developed by Sir Schiz0ide / MrAsylum            |
  *@ Version 1.0                                      |
  *@---------------------------------------------------
 **/
 
 class DBFactoryChild
 {
-	public static $dbh;
-	
-	public static function Prepared_Query($SQL, $Params)
+	private static $dbh;
+
+	public function prepareQuery($SQL, $Params = null, $type)
 	{
 		try
 		{
+			switch(strtolower($type))
+			{
+			case 'select' :
 			self::$dbh = DBFactory::getInstance();
-			$Swag = self::$dbh->prepare($SQL);
-			$Swag->execute($Params);
-			$Result = $Swag->fetch(PDO::FETCH_ASSOC);
+			$stmt = self::$dbh->prepare($SQL);
+			$stmt->execute($Params);
+			$Result = $stmt->fetch(PDO::FETCH_ASSOC);
 			return $Result;
-		}
-		catch(PDOException $error)
-		{
-			return $error->getMessage();
-		}
-	}
-	
-	public static function Prepared_Query_With_Row_Count($SQL, $Params)
-	{
-		//This should only be used for checking a login or anything similar to that
-		try
-		{
+			break;
+			
+			case 'update' :
 			self::$dbh = DBFactory::getInstance();
-			$Execution = self::$dbh->prepare($SQL);
-			$Execution->execute($Params);
-			$Result = $Execution->fetchColumn();
-		
-			if($Result > 0)
-			{
-				return true;
+			$stmt = self::$dbh->prepare($SQL);
+			$stmt->execute($Params);
+			break;
+			
+			case 'insert' :
+			self::$dbh = DBFactory::getInstance();
+			$stmt = self::$dbh->prepare($SQL);
+			$stmt->execute($Params);
+			break;
+			
+			case 'delete' :
+			self::$dbh = DBFactory::getInstance();
+			$stmt = self::$dbh->prepare($SQL);
+			$stmt->execute($Params);
+			break;
+			
+			case 'check' :
+			self::$dbh = DBFactory::getInstance();
+			$stmt = self::$dbh->prepare($SQL);
+			$stmt->execute($Params);
+			$final = $stmt->fetchColumn();
+			if($final) 
+			{ 
+				return true; 
+			} 
+				else 
+			{ 
+				return false; 
 			}
-			else
-			{
-				return false;
+			break;
 			}
 		}
 		catch(PDOException $error)
 		{
 			return $error->getMessage();
 		}
-	}	
-	
-	public static function Exploit_Evasion($Data)
-	{
-		return htmlspecialchars($Data);
 	}
 
-	
+
 
 }
+?>
