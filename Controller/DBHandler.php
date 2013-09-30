@@ -10,7 +10,8 @@
 class DBFactoryChild
 {
 	private static $dbh;
-
+	
+	//example: $Variable->prepareQuery('SELECT * FROM whatever WHERE something = ?', array($anothervar), 'select');
 	public function prepareQuery($SQL, $Params = null, $type)
 	{
 		try
