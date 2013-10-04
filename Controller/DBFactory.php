@@ -1,7 +1,7 @@
 <?php
 /**
  *@ --------------------------------------------------
- *@ Singleton PDO wrapper         					 |
+ *@ Singleton PDO wrapper         		     |
  *@ Developed by Sir Schiz0ide                       |
  *@ Version 1.0                                      |
  *@---------------------------------------------------
@@ -22,7 +22,7 @@ class database
 		if(self::$_instance === null)
 		{
 			try {
-			self::$_instance = new /PDO('mysql:host=' . Config\handler::Read("DB_HOST") . ';dbname=' . Config\handler::Read("DB_Name"), Config\handler::Read("DB_User"), Config\handler::Read("DB_Pass")); 
+			self::$_instance = new \PDO('mysql:host=' . \Config\handler::Read("DB_HOST") . ';dbname=' . \Config\handler::Read("DB_NAME"), \Config\handler::Read("DB_USER"), \Config\handler::Read("DB_PASS")); 
 			}
 			catch(PDOException $error)
 			{
