@@ -1,5 +1,6 @@
 <?php
-require_once("config.php")
+require 'config.php';
 
-//do something here
+
+$PDO = Application\database::getInstance();
 ?>
