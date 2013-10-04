@@ -7,7 +7,9 @@
  *@---------------------------------------------------
 **/
 
-class DBFactoryChild
+namespace Handler;
+
+class dbfactorychild
 {
 	private static $dbh;
 	
@@ -19,7 +21,7 @@ class DBFactoryChild
 			switch(strtolower($type))
 			{
 			case 'select' :
-			self::$dbh = DBFactory::getInstance();
+			self::$dbh = Application\database::getInstance();
 			$stmt = self::$dbh->prepare($SQL);
 			$stmt->execute($Params);
 			$Result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -27,25 +29,25 @@ class DBFactoryChild
 			break;
 			
 			case 'update' :
-			self::$dbh = DBFactory::getInstance();
+			self::$dbh = Application\database::getInstance();
 			$stmt = self::$dbh->prepare($SQL);
 			$stmt->execute($Params);
 			break;
 			
 			case 'insert' :
-			self::$dbh = DBFactory::getInstance();
+			self::$dbh = Application\database::getInstance();
 			$stmt = self::$dbh->prepare($SQL);
 			$stmt->execute($Params);
 			break;
 			
 			case 'delete' :
-			self::$dbh = DBFactory::getInstance();
+			self::$dbh = Application\database::getInstance();
 			$stmt = self::$dbh->prepare($SQL);
 			$stmt->execute($Params);
 			break;
 			
 			case 'check' :
-			self::$dbh = DBFactory::getInstance();
+			self::$dbh = Application\database::getInstance();
 			$stmt = self::$dbh->prepare($SQL);
 			$stmt->execute($Params);
 			$final = $stmt->fetchColumn();
