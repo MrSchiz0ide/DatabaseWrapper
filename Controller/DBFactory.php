@@ -22,7 +22,7 @@ class database
 		if(self::$_instance === null)
 		{
 			try {
-			self::$_instance = new /PDO('mysql:host=' . Config::Read("DB_HOST") . ';dbname=' . Config::Read("DB_Name"), Config::Read("DB_User"), Config::Read("DB_Pass")); 
+			self::$_instance = new /PDO('mysql:host=' . Config\handler::Read("DB_HOST") . ';dbname=' . Config\handler::Read("DB_Name"), Config\handler::Read("DB_User"), Config\handler::Read("DB_Pass")); 
 			}
 			catch(PDOException $error)
 			{
