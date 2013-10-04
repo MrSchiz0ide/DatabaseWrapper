@@ -1,6 +1,7 @@
 <?php
 
-class Config 
+namespace Config;
+class handler
 {
 	public static $config = array();
 
