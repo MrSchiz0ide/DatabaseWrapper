@@ -1,11 +1,12 @@
 <?php
-/* Includes */
-require_once("/Controller/DBFactory.php");
-require_once("/Controller/DBHandler.php");
+require 'Controller/DBFactory.php';
+require 'Controller/DBHandler.php';
+require 'Controller/Config_Handler.php';
 
-/* Dynamic Configuration */
-Config\handler::Write('DB_HOST', 'enter host here');
-Config\handler::Write('DB_NAME', 'enter database name here');
-Config\handler::('DB_USER', 'enter database username here');
-Config\handler::Write('DB_PASS', 'enter database password here');
+
+Config\handler::Write('DB_HOST', '');
+Config\handler::Write('DB_NAME', '');
+Config\handler::Write('DB_USER', '');
+Config\handler::Write('DB_PASS', '');
 ?>
+
